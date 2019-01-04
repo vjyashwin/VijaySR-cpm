@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -11,6 +13,8 @@ public class LondonCarParkManager {
 	    static int carCounter;
 	    static int ticketNumber = 5000;
 	    static EmptyParkingSlot emptySlot = new EmptyParkingSlot("Empty");
+	    //static List<Vehicle> slots = new ArrayList<Vehicle>();
+	    static List slots = new ArrayList();
 	    
 	
 
@@ -76,17 +80,18 @@ public class LondonCarParkManager {
 	public void parkCar(){
         try {
             sc = new Scanner(System.in);
-              
+            trackFreeSlots();              
              if (parkingSlotCount > 0) {
             	
             	Car car = new Car();
-               System.out.println("\n\t# # # # Add a car to the park # # # # ");
+            	System.out.println("\n\t        Add a car to the park         ");
                 System.out.println("\nPlease enter the ID Plate number of the Car");
                 car.setIdPlate(sc.next());
+                slots.add(car);
                 parkingSlotCount--;
                 carCounter++;
                 ticketNumber++;
-                System.out.println("Your Vehicle ID is: "+car.getIdPlate());
+                System.out.println("Your Car's registration ID is: "+car.getIdPlate());
                 System.out.println("\n your Parking Tocket no is: "+ticketNumber);
               
                   } else {
@@ -98,6 +103,19 @@ public class LondonCarParkManager {
           
         }
 
+    }
+	
+	public void trackFreeSlots(){
+        if(parkingSlotCount >0){
+            if (parkingSlotCount == 1) {
+                System.out.println("Hopefully, there's a parking slot remaining");
+            }else {
+                System.out.println(" \n There are " + parkingSlotCount + " remaining. \n");                
+            }
+        }else {
+            System.out.println("\nThere are no remaining slots. \nThanks");
+            displayMainMenu();
+        }
     }
 	
 	
