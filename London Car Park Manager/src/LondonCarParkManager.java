@@ -103,7 +103,7 @@ public class LondonCarParkManager {
              if (parkingSlotCount > 0) {
             	
             	Car car = new Car();
-            	System.out.println("\n\t        Add a car to the park         ");
+            	System.out.println("\n\t        Park a Car         ");
                 System.out.println("\nPlease enter the ID Plate number of the Car");
                 car.setIdPlate(sc.next());
                 slots.add(car);
@@ -151,7 +151,7 @@ public class LondonCarParkManager {
 	public void unparkCar(){
 
         System.out.println();
-        System.out.println("                  Delete a vehicle                   \n ");
+        System.out.println("                 Unpark a car                   \n ");
         if (carCounter == 0) {
             System.out.println("Cannot Perform this action as there are no cars parked");
        }else {
